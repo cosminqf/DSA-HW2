@@ -9,7 +9,10 @@ class Leftist:
     def __init__(self):
         self.rad = None
 
-    def merge(self, h1, h2):
+    def merge(self, other):
+        self.rad = self.merge1(self.rad, other.rad)
+
+    def merge1(self, h1, h2):
         if h1 is None:
             return h2
         if h2 is None:
@@ -18,7 +21,7 @@ class Leftist:
         if h1.val > h2.val:
             h1, h2 = h2, h1
         
-        h1.right = self.merge(h1.right, h2)
+        h1.right = self.merge1(h1.right, h2)
 
         if h1.left is None:
             st_npl = -1
@@ -38,19 +41,17 @@ class Leftist:
     
     def insert(self, val):
         nod = Nod(val)
-        self.rad = self.merge(self.rad, nod)
+        self.rad = self.merge1(self.rad, nod)
     
     def extract_min(self):
         if self.rad is None:
             return "Heap-ul nu are radacina"
         mn = self.rad.val
-        self.rad = self.merge(self.rad.left, self.rad.right)
+        self.rad = self.merge1(self.rad.left, self.rad.right)
         return mn
-
 
 """
 heap = Leftist()
-heap1 = Leftist()
 heap2 = Leftist()
 heap.insert(5)
 heap.insert(10)
@@ -63,6 +64,6 @@ heap2.insert(1)
 
 print(heap.extract_min())
 print(heap.extract_min())
-heap1.rad = heap.merge(heap.rad, heap2.rad)
-print(heap1.extract_min())
+heap.merge(heap2)
+print(heap.extract_min())
 """
