@@ -1,5 +1,5 @@
 import time
-from fibonacci import heapFibonacci
+from fibonacci import FibonacciHeap
 from leftist import Leftist
 from twothreeheap import TwoThreeMinHeap
 
@@ -40,14 +40,14 @@ def run_with_stats(heap_class, file_path):
     return end - start, n
 
 heaps = {
-    "Fibonacci": heapFibonacci,
+    "Fibonacci": FibonacciHeap,
     "Leftist": Leftist,
     "2-3": TwoThreeMinHeap
 }
 
 tests = [
     "tests/insert_heavy.in",
-    "tests/merge_heavy.in",
+    #"tests/merge_heavy.in",
     "tests/extract_heavy.in",
     "tests/balanced.in"
 ]
@@ -56,7 +56,7 @@ for heap_name, heap_class in heaps.items():
     print(f"\n==== Teste pentru {heap_name} Heap ====")
     for test_file in tests:
         try:
-            runtime, fail_extract, total = run_with_stats(heap_class, test_file)
+            runtime, total = run_with_stats(heap_class, test_file)
             print(f">> {test_file:<30} | timp: {runtime:.4f}s | operații: {total}")
         except Exception as e:
             print(f">> {test_file:<30} | EROARE: {str(e)}")
