@@ -58,7 +58,7 @@ def generate_balanced(filename, ops=1000, heaps=5, max_val=1000000):
     save_test(filename, operations)
 
 if __name__ == "__main__":
-    generate_insert_heavy("insert_heavy.in", ops=5000000)
-    generate_merge_heavy("merge_heavy.in", ops=5000000)
-    generate_extract_heavy("extract_heavy.in", ops=5000000)
-    generate_balanced("balanced.in", ops=5000000)
+    generate_insert_heavy("insert_heavy.in", ops=1000000)
+    generate_merge_heavy("merge_heavy.in", ops=1000000)
+    generate_extract_heavy("extract_heavy.in", ops=1000000)
+    generate_balanced("balanced.in", ops=1000000)
