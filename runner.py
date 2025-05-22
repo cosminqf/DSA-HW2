@@ -47,7 +47,7 @@ heaps = {
 
 tests = [
     "tests/insert_heavy.in",
-    #"tests/merge_heavy.in",
+    "tests/merge_heavy.in",
     "tests/extract_heavy.in",
     "tests/balanced.in"
 ]
